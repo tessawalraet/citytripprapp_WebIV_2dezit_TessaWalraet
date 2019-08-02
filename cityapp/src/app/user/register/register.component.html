@@ -1,0 +1,51 @@
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="row" style="height: 450px;">
+            <div class="col-md-12 my-auto side-header">
+                <img src="/assets/images/add_user.png" class="mx-auto d-block">
+                <h1>Registreer bij CityTrippr!</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+            <div class="form-group required">
+                <label>Gebruikersnaam</label>
+                <input class="form-control" formControlName="UserName">
+                <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">Dit veld is verplicht!</label>
+            </div>
+            <div class="form-group">
+                <label>Voornaam</label>
+                <input class="form-control" formControlName="FirstName">
+            </div>
+            <div class="form-group">
+                <label>Familienaam</label>
+                <input class="form-control" formControlName="LastName">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" formControlName="Email">
+                <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Email is niet geldig!</label>
+            </div>
+            <div formGroupName="Passwords">
+                <div class="form-group required">
+                    <label>Wachtwoord</label>
+                    <input type="password" class="form-control" formControlName="Password">
+                    <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">Dit veld is verplicht!</label>
+                    <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minlength">Minimum 3 karakters!</label>
+                </div>
+                <div class="form-group required">
+                    <label>Bevestig wachtwoord</label>
+                    <input type="password" class="form-control" formControlName="ConfirmPassword">
+                    <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">Dit veld is verplicht!</label>
+                    <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Wachtwoord komt niet overeen!</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-8 offset-md-2">
+                    <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Registreer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
