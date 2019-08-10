@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +15,11 @@ export class UserService {
     UserName: ['', Validators.required],
     FirstName: [''],
     LastName: [''],
-    Email: ['', Validators.email],
+    Email: ['', Validators.required, Validators.email],
     Passwords: this.fb.group({
       Password: ['', [Validators.required, Validators.minLength(3)]],
       ConfirmPassword: ['', Validators.required]
-    }, {validator: this.comparePasswords})
+    }, { validator: this.comparePasswords })
   });
 
   comparePasswords(fb: FormGroup) {
@@ -45,5 +45,9 @@ export class UserService {
 
   login(formData) {
     return this.http.post(this.BaseURI + '/AppUser/Login', formData);
+  }
+
+  getUserProfile() {
+    return this.http.get(this.BaseURI + '/UserProfile');
   }
 }
