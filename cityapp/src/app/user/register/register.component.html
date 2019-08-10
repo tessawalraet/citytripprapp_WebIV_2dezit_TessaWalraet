@@ -1,18 +1,8 @@
-<div class="row mt-4">
-    <div class="col-md-6">
-        <div class="row" style="height: 450px;">
-            <div class="col-md-12 my-auto side-header">
-                <img src="/assets/images/add_user.png" class="mx-auto d-block">
-                <h1>Registreer bij CityTrippr!</h1>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
-            <div class="form-group required">
-                <label>Gebruikersnaam</label>
-                <input class="form-control" formControlName="UserName">
-                <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">Dit veld is verplicht!</label>
+<form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+    <div class="form-group required">
+        <label>Gebruikersnaam</label>
+            <input class="form-control" formControlName="UserName">
+            <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">Dit veld is verplicht!</label>
             </div>
             <div class="form-group">
                 <label>Voornaam</label>
@@ -47,5 +37,3 @@
                 </div>
             </div>
         </form>
-    </div>
-</div>
