@@ -16,6 +16,11 @@ import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TripComponent } from './trip/trip.component';
+import { DetailsComponent } from './trip/details/details.component';
+import { TripListComponent } from './trip/trip-list/trip-list.component';
+import { TripService } from './trip/trip.service';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    TripComponent,
+    DetailsComponent,
+    TripListComponent
   ],
   imports: [
     BrowserModule,
@@ -33,12 +41,13 @@ import { NavbarComponent } from './navbar/navbar.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MaterialModule,
     ToastrModule.forRoot({
       progressBar: true
     }),
     FormsModule
   ],
-  providers: [UserService, {
+  providers: [UserService, TripService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

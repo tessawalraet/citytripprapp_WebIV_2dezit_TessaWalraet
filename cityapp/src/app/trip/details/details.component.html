@@ -1,0 +1,107 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <!---Bestemming-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+            </div>
+            <input name="Destination" #Destination="ngModel" [(ngModel)]="service.Destination" class="form-control" placeholder="Bestemming" required>
+        </div>
+    </div>
+    <!--Beschrijving-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-pen-alt"></i>
+                </div>
+            </div>
+            <input name="Description" #Description="ngModel" [(ngModel)]="service.Description" class="form-control" placeholder="Beschrijving" maxlength="250">
+        </div>
+    </div>
+    <!--Hoogtepunt-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-archway"></i>
+                </div>
+            </div>
+            <input name="Highlight" #Highlight="ngModel" [(ngModel)]="service.Highlight" class="form-control" placeholder="Hoogtepunt">
+        </div>
+    </div>
+    <!--Aantal dagen-->
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                </div>
+                <input name="Days" #Days="ngModel" [(ngModel)]="service.Days" class="form-control" placeholder="Aantal dagen" min="1">
+            </div>
+        </div>
+        <!--Gerelateerd-->
+        <div class="form-group">
+            <div class="input-group col-md-5">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fas fa-suitcase"></i>
+                    </div>
+                </div>
+                <mat-radio-group aria-label="Gerelateerd">
+                    <mat-radio-button value="1">Privé</mat-radio-button>
+                    <mat-radio-button value="2">Werk</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+    <!--Eten-->
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                </div>
+                <mat-select name="Food" #Food="ngModel" [(ngModel)]="service.Food" class="form-control" placeholder="Eten">
+                    <mat-option *ngFor="let food of numberList" [value]="food">{{ food }}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <!--Weer-->
+        <div class="form-group">
+            <div class="input-group col-md-4">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                </div>
+                <mat-select name="Weather" #Weather="ngModel" [(ngModel)]="service.Weather" class="form-control" placeholder="Weer">
+                        <mat-option *ngFor="let weather of numberList" [value]="weather">{{ weather }}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <!--Ervaring-->
+        <div class="form-group">
+            <div class="input-group col-md-4">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                </div>
+                <mat-select name="Experience" #Experience="ngModel" [(ngModel)]="service.Experience" class="form-control" placeholder="Ervaring" required>
+                    <mat-option *ngFor="let experience of numberList" [value]="experience">{{ experience }}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-succes btn-lg btn-block" type="submit" [disabled]="form.invalid"><i class="fas fa-map-marked-alt"></i> Toevoegen</button>
+    </div>
+</form>
