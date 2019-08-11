@@ -35,10 +35,31 @@ export class DetailsComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.service.postTrip(form.value).subscribe(
+    if(this.service.formData.TripId == 0)
+      this.insertRecord(form);
+    else
+      this.updateRecord(form);
+  }
+
+  insertRecord(form: NgForm) {
+    this.service.postTrip().subscribe(
       res => {
         this.resetForm(form);
-        this.toastr.success('Succesvol toegevoegd!', 'Mijn CityTripps')
+        this.toastr.success('Succesvol toegevoegd!', 'Mijn CityTripps');
+        this.service.refreshList();
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  updateRecord(form: NgForm) {
+    this.service.putTrip().subscribe(
+      res => {
+        this.resetForm(form);
+        this.toastr.info('Succesvol aangepast!', 'Mijn CityTripps');
+        this.service.refreshList();
       },
       err => {
         console.log(err);

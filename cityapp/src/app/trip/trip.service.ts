@@ -13,8 +13,16 @@ export class TripService {
 
   constructor(private http: HttpClient) { }
 
-  postTrip(formData: Trip) {
-    return this.http.post(this.BaseURI + '/Trip', formData);
+  postTrip() {
+    return this.http.post(this.BaseURI + '/Trip', this.formData);
+  }
+
+  putTrip() {
+    return this.http.put(this.BaseURI + '/Trip/' + this.formData.TripId, this.formData);
+  }
+
+  deleteTrip(id) {
+    return this.http.delete(this.BaseURI + '/Trip/' + id);
   }
 
   refreshList() {

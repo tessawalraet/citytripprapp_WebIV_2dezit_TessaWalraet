@@ -1,12 +1,15 @@
 <table class="table table-hover">
     <tr *ngFor="let trip of service.list">
-        <td>{{ trip.Destination }}</td>
-        <td>{{ trip.Description }}</td>
-        <td>{{ trip.Highlight }}</td>
-        <td>{{ trip.Days }}</td>
-        <td>{{ trip.Related }}</td>
-        <td>{{ trip.Food }}</td>
-        <td>{{ trip.Weather }}</td>
-        <td>{{ trip.Experience }}</td>
+        <td (click)="populateForm(trip)">{{ trip.Destination }}</td>
+        <td (click)="populateForm(trip)">{{ trip.Description }}</td>
+        <td (click)="populateForm(trip)">{{ trip.Highlight }}</td>
+        <td (click)="populateForm(trip)">{{ trip.Days }}</td>
+        <td (click)="populateForm(trip)">{{ trip.Related }}</td>
+        <td (click)="populateForm(trip)">{{ trip.Food }}</td>
+        <td (click)="populateForm(trip)">{{ trip.Weather }}</td>
+        <td (click)="populateForm(trip)">{{ trip.Experience }}</td>
+        <td>
+            <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(trip.TripId)"></i>
+        </td>
     </tr>
 </table>
