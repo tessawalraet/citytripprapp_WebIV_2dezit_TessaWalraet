@@ -16,7 +16,7 @@ export class TripListComponent implements OnInit {
     this.service.refreshList();
   }
 
-  populateForm(trip: Trip) {
+  onUpdate(trip: Trip) {
     this.service.formData = Object.assign({}, trip);
   }
 

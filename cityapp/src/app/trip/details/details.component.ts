@@ -42,13 +42,15 @@ export class DetailsComponent implements OnInit {
   }
 
   insertRecord(form: NgForm) {
-    this.service.postTrip().subscribe(
+    this.service.postTrip(form.value).subscribe(
       res => {
+        debugger;
         this.resetForm(form);
         this.toastr.success('Succesvol toegevoegd!', 'Mijn CityTripps');
         this.service.refreshList();
       },
       err => {
+        debugger;
         console.log(err);
       }
     )

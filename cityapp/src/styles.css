@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins: 400,700');
+
 body{
-    background-color: #ECDCD8
+    background-color: #def2f1;
+    font-family: 'Poppins';
 }
 
 input.form-control,input.form-control:focus{
-    background-color: #636b7b;
+    background-color: #feffff;
     color: #fff;
-    border: 1px solid #636b7b;
+    border: 1px solid #a9a9a9;
 
 }
 
@@ -15,7 +18,7 @@ input.form-control:focus{
 
 button[type=submit].btn{
     border-radius: 20px;
-    background-color: #04c582;
+    background-color: #3aafa9;
     color: #fff;
 }
 
@@ -56,14 +59,9 @@ div.form-group.required>label:first-child:after{
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   }
 
-  table tr:hover {
-      cursor: pointer;
-      background-color: #CECECE;
-  }
-
   /* Tabs */
 .tab-header{
-    text-align: center;
+    text-align: right;
 }
 
   .tab-header h2.active {
