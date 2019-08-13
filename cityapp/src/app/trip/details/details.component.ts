@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripService } from '../trip.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -44,13 +44,11 @@ export class DetailsComponent implements OnInit {
   insertRecord(form: NgForm) {
     this.service.postTrip(form.value).subscribe(
       res => {
-        debugger;
         this.resetForm(form);
         this.toastr.success('Succesvol toegevoegd!', 'Mijn CityTripps');
         this.service.refreshList();
       },
       err => {
-        debugger;
         console.log(err);
       }
     )

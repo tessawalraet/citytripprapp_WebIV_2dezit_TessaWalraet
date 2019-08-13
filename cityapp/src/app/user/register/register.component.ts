@@ -20,16 +20,16 @@ export class RegisterComponent implements OnInit {
       (res: any) => {
         if (res.succeeded) {
           this.service.formModel.reset();
-          this.toastr.success('Nieuwe gebruiker aangemeld!', 'Registratie is geslaagd.');
+          this.toastr.success('Nieuwe gebruiker is aangemaakt.', 'Registratie is succesvol.');
         } else {
           res.errors.forEach(element => {
             switch (element.code) {
               case 'DuplicateUserName':
-                this.toastr.error('Gebruikersnaam reeds in gebruik!','Registratie is mislukt.');
+                this.toastr.error('Gebruikersnaam reeds in gebruik!','Registratie is gefaald!');
                 break;
 
               default:
-              this.toastr.error(element.description,'Registratie is mislukt.');
+              this.toastr.error(element.description,'Registratie is gefaald!');
                 break;
             }
           });

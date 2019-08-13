@@ -7,7 +7,7 @@
                     <i class="fas fa-globe-americas"></i>
                 </div>
             </div>
-            <input name="Destination" #Destination="ngModel" [(ngModel)]="service.Destination" class="form-control" placeholder="Bestemming" required>
+            <input name="Destination" #Destination="ngModel" [(ngModel)]="service.Destination" class="form-control" placeholder="Bestemming">
         </div>
     </div>
     <!--Beschrijving-->
@@ -19,7 +19,7 @@
                         <i class="fas fa-pen-alt"></i>
                     </div>
                 </div>
-                <textarea name="Description" #Description="ngModel" [(ngModel)]="service.Description" class="form-control" placeholder="Beschrijving" maxlength="250" style="width: 680px; height: 110px"></textarea>
+                <textarea id="border" name="Description" #Description="ngModel" [(ngModel)]="service.Description" class="form-control" placeholder="Beschrijving" maxlength="250" style="width: 680px; height: 110px"></textarea>
             </div>
         </div>
     <!--Hoogtepunt-->
@@ -36,7 +36,7 @@
             </div>
     <!--Aantal dagen-->
             <div class="form-group">
-                <div class="input-group" style="margin-left: 43px; margin-top: 50px">
+                <div class="input-group" style="margin-left: 43px; margin-top: 35px">
                     <div class="input-group-prepend">
                         <div class="input-group-text bg-white">
                             <i class="far fa-calendar-alt"></i>
@@ -47,28 +47,32 @@
             </div>
         </div>
     </div>
-        <!--Gerelateerd-->
+    <!--Gerelateerd-->
     <div class="form-group">
-        <div class="input-group" style="width: 200px">
+        <div class="input-group" style="width: 250px">
             <div class="input-group-prepend">
                 <div class="input-group-text bg-white">
                     <i class="fas fa-suitcase"></i>
                 </div>
             </div>
-            <input type="radio" name="related" #Related="ngModel" [(ngModel)]="service.Related" class="form-control" value="Privé"> Privé<br>
-            <input type="radio" name="related" #Related="ngModel" [(ngModel)]="service.Related" class="form-control" value="Werk"> Werk<br>
+            <mat-radio-group name="related" #Related="ngModel" [(ngModel)]="service.Related" class="form-control">
+                <mat-radio-button value="Privé">Privé</mat-radio-button>
+                <mat-radio-button class="col-md-6" value="Werk">Werk</mat-radio-button><br>
+            </mat-radio-group>
+            
         </div>
     </div>
     <!--Eten-->
     <div class="form-row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-4" style="height: 100px">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text bg-white">
                         <i class="fas fa-utensils"></i>
                     </div>
                 </div>
-                <mat-select name="Food" #Food="ngModel" [(ngModel)]="service.Food" class="form-control" placeholder="Eten">
+                <mat-select id="border" name="Food" #Food="ngModel" [(ngModel)]="service.formData.Food" class="form-control" placeholder="Eten">
+                    <mat-option>-Eten-</mat-option>
                     <mat-option *ngFor="let food of numberList" [value]="food">{{ food }}</mat-option>
                 </mat-select>
             </div>
@@ -81,10 +85,10 @@
                         <i class="fas fa-umbrella-beach"></i>
                     </div>
                 </div>
-                <select name="Weather" #Weather="ngModel" [(ngModel)]="service.Weather" class="form-control" aria-placeholder="Weer">
-                    <option value="10" selected>Weer</option> 
-                    <option *ngFor="let weather of numberList" [value]="weather">{{ weather }}</option>
-                </select>
+                <mat-select id="border" name="Weather" #Weather="ngModel" [(ngModel)]="service.Weather" class="form-control" placeholder="Weer">
+                    <mat-option>-Weer-</mat-option> 
+                    <mat-option *ngFor="let weather of numberList" [value]="weather">{{ weather }}</mat-option>
+                </mat-select>
             </div>
         </div>
         <!--Ervaring-->
@@ -95,15 +99,15 @@
                         <i class="fas fa-user-check"></i>
                     </div>
                 </div>
-                <select name="Experience" #Experience="ngModel" [(ngModel)]="service.Experience" class="form-control" placeholder="Ervaring *" [class.is-invalid]="!isValid && service.formData.Food==0">
-                    <option *ngFor="let experience of numberList" [value]="experience">{{ experience }}</option>
-                </select>
+                <mat-select required id="border" name="Experience" #Experience="ngModel" [(ngModel)]="service.Experience" class="form-control" [class.is-invalid]="!isValid && service.Food==0" placeholder="Ervaring *">
+                    <mat-option *ngFor="let experience of numberList" [value]="experience">{{ experience }}</mat-option>
+                </mat-select>
             </div>
         </div>
     </div>
     <br>
     <br>
     <div class="form-group">
-        <button class="btn btn-succes btn-lg btn-block" type="submit" [disabled]="form.invalid"><i class="fas fa-map-marked-alt"></i> Toevoegen</button>
+        <button class="btn btn-succes btn-lg btn-block" type="submit" [disabled]="form.invalid"><i class="fas fa-map-marked-alt" data-cy="add-city-button"></i> Toevoegen</button>
     </div>
 </form>

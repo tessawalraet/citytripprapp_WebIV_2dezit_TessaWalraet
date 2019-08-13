@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins: 400,700');
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 body{
     background-color: #def2f1;
@@ -7,9 +8,12 @@ body{
 
 input.form-control,input.form-control:focus{
     background-color: #feffff;
-    color: #fff;
+    color: rgb(0, 0, 0);
     border: 1px solid #a9a9a9;
+}
 
+#border{
+    border: 1px solid #a9a9a9;
 }
 
 input.form-control:focus{
@@ -61,7 +65,7 @@ div.form-group.required>label:first-child:after{
 
   /* Tabs */
 .tab-header{
-    text-align: right;
+    text-align: center;
 }
 
   .tab-header h2.active {

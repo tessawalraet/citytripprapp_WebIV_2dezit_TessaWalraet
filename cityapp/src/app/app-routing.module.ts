@@ -17,7 +17,7 @@ const routes: Routes = [
     ]
   },
   {path:'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path:'UserProfile', component: ProfileComponent}
+  {path:'UserProfile', component: ProfileComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
