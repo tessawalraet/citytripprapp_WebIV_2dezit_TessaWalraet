@@ -21,6 +21,7 @@ import { DetailsComponent } from './trip/details/details.component';
 import { TripListComponent } from './trip/trip-list/trip-list.component';
 import { TripService } from './trip/trip.service';
 import { MaterialModule } from './material/material.module';
+import { TripFilterPipe } from './trip/trip-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MaterialModule } from './material/material.module';
     NavbarComponent,
     TripComponent,
     DetailsComponent,
-    TripListComponent
+    TripListComponent,
+    TripFilterPipe
   ],
   imports: [
     BrowserModule,

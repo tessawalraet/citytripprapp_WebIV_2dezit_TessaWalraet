@@ -47,7 +47,7 @@ describe('CityTrippr tests', function() {
         });
     });
 
-    it('Login to an active account and go to profiletab', function() {
+    it('Login to an active account, than filter a destination and go to profiletab', function() {
         cy.server();
         cy.visit('http://localhost:4200');
         cy.wait(2000);
@@ -66,6 +66,15 @@ describe('CityTrippr tests', function() {
         cy.route({
             method: 'GET',
             url: 'http://localhost:4200/user/login',
+            status: 200
+        });
+        cy.wait(2000);
+        cy.get('[data-cy=filterInput]').type('Napels').should('have.value', 'Napels');
+        cy.get('[data-cy=filter-button]').click();
+        cy.wait(2000);
+        cy.route({
+            method: 'GET',
+            url: 'http://localhost:4200/home',
             status: 200
         });
         cy.wait(2000);

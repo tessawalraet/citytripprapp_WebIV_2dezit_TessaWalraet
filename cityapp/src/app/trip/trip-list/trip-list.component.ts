@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TripService } from '../trip.service';
 import { Trip } from '../trip.model';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
+import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-trip-list',
@@ -10,7 +12,19 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TripListComponent implements OnInit {
 
-  constructor(private service: TripService, private toastr: ToastrService) { }
+  public filterTripDest: string = '';
+  public filterTrip$ = new Subject<string>();
+
+  constructor(private service: TripService, private toastr: ToastrService) { 
+    this.filterTrip$
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(400),
+        map(value => value.toLowerCase())
+      )
+      .subscribe(
+        value => this.filterTripDest = value);
+  }
 
   ngOnInit() {
     this.service.refreshList();
@@ -32,5 +46,9 @@ export class TripListComponent implements OnInit {
         }
       )
     }
+  }
+
+  applyFilter(filter:string) {
+    this.filterTripDest = filter;
   }
 }
