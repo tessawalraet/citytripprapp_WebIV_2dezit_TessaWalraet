@@ -22,6 +22,13 @@ import { TripListComponent } from './trip/trip-list/trip-list.component';
 import { TripService } from './trip/trip.service';
 import { MaterialModule } from './material/material.module';
 import { TripFilterPipe } from './trip/trip-filter.pipe';
+import { GalleryComponent } from './gallery/gallery.component';
+import { ImageComponent } from './gallery/image/image.component';
+import { ImageListComponent } from './gallery/image-list/image-list.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -35,7 +42,10 @@ import { TripFilterPipe } from './trip/trip-filter.pipe';
     TripComponent,
     DetailsComponent,
     TripListComponent,
-    TripFilterPipe
+    TripFilterPipe,
+    GalleryComponent,
+    ImageComponent,
+    ImageListComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +57,11 @@ import { TripFilterPipe } from './trip/trip-filter.pipe';
     ToastrModule.forRoot({
       progressBar: true
     }),
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
+
   ],
   providers: [UserService, TripService, {
     provide: HTTP_INTERCEPTORS,

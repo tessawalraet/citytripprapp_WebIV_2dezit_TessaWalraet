@@ -1,0 +1,32 @@
+<div class="card" style="width: 25rem">
+    <div class="card-body">
+        <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+            <div class="text-center">
+                <img [src]="imgSrc" width="300px" height="200px" (click)="uploadFile.click()">
+            </div>
+            <div class="form-group">
+                <label>Selecteer bestand</label>
+                <input type="file" accept="image/*" class="form-control" #uploadFile formControlName="imageUrl" (change)="showPreview($event)">
+                <div class="text-danger" *ngIf="isSubmitted && formControls.imageUrl.errors?.required">Dit veld is verplicht!</div>
+            </div>
+            <div class="form-group">
+                <input class="form-control" formControlName="caption" placeholder="Caption">
+                <div class="text-danger" *ngIf="isSubmitted && formControls.caption.errors?.required">Dit veld is verplicht!</div>
+            </div>
+            <div class="form-group">
+                <mat-select formControlName="category" class="form-control" placeholder="-Select-">
+                    <mat-option value="Europa">Europa</mat-option>
+                    <mat-option value="Noord-Amerika">Noord-Amerika</mat-option>
+                    <mat-option value="Midden-Amerika">Midden-Amerika</mat-option>
+                    <mat-option value="Zuid-Amerika">Zuid-Amerika</mat-option>
+                    <mat-option value="Azië">Azië</mat-option>
+                    <mat-option value="Afrika">Afrika</mat-option>
+                    <mat-option value="Oceanië">Oceanië</mat-option>
+                </mat-select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-succes float-right">Uploaden</button>
+            </div>
+        </form>
+    </div>
+</div>
