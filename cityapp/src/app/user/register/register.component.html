@@ -12,9 +12,10 @@
                 <label>Familienaam</label>
                 <input class="form-control" formControlName="LastName">
             </div>
-            <div class="form-group">
+            <div class="form-group required">
                 <label>Email</label>
                 <input class="form-control" formControlName="Email">
+                <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.required">Dit veld is verplicht!</label>
                 <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Email is niet geldig!</label>
             </div>
             <div formGroupName="Passwords">

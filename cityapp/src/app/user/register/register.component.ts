@@ -29,10 +29,10 @@ export class RegisterComponent implements OnInit {
                 break;
 
               default:
-              this.toastr.error(element.description,'Registratie is gefaald!');
+                this.toastr.error(element.description,'Registratie is gefaald!');
                 break;
             }
-          });
+          });       
         }
       },
       err => {
