@@ -42,7 +42,7 @@
                             <i class="far fa-calendar-alt" [class.red-icon]="Days.invalid && Days.touched"></i>
                         </div>
                     </div>
-                    <input type="number" min="1" name="Days" #Days="ngModel" [(ngModel)]="service.Days" class="form-control" placeholder="Aantal dagen" required>
+                    <input type="number" min="1" name="Days" #Days="ngModel" [(ngModel)]="service.Days" class="form-control" placeholder="Aantal dagen *" required>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                         <i class="fas fa-utensils" [class.red-icon]="Food.invalid && Food.touched"></i>
                     </div>
                 </div>
-                <mat-select id="border" name="Food" #Food="ngModel" [(ngModel)]="service.Food" class="form-control" placeholder="-Eten *-" required>
+                <mat-select id="border" name="Food" #Food="ngModel" [(ngModel)]="service.Food" class="form-control" placeholder="Eten *" required>
                     <mat-option *ngFor="let food of numberList" [value]="food">{{ food }}</mat-option>
                 </mat-select>
             </div>
@@ -83,7 +83,7 @@
                         <i class="fas fa-umbrella-beach" [class.red-icon]="Weather.invalid && Weather.touched"></i>
                     </div>
                 </div>
-                <mat-select id="border" name="Weather" #Weather="ngModel" [(ngModel)]="service.Weather" class="form-control" placeholder="-Weer *-" required>
+                <mat-select id="border" name="Weather" #Weather="ngModel" [(ngModel)]="service.Weather" class="form-control" placeholder="Weer *" required>
                     <mat-option *ngFor="let weather of numberList" [value]="weather">{{ weather }}</mat-option>
                 </mat-select>
             </div>
@@ -96,7 +96,7 @@
                         <i class="fas fa-user-check" [class.red-icon]="Experience.invalid && Experience.touched"></i>
                     </div>
                 </div>
-                <mat-select id="border" name="Experience" #Experience="ngModel" [(ngModel)]="service.Experience" class="form-control" placeholder="-Ervaring *-" required>
+                <mat-select id="border" name="Experience" #Experience="ngModel" [(ngModel)]="service.Experience" class="form-control" placeholder="Ervaring *" required>
                     <mat-option *ngFor="let experience of numberList" [value]="experience">{{ experience }}</mat-option>
                 </mat-select>
             </div>

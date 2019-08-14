@@ -25,8 +25,9 @@ const routes: Routes = [
   {
     path:'gallery', component: GalleryComponent, canActivate: [AuthGuard],
     children: [
-      { path:'upload', component: ImageComponent }, //gallery/upload
-      { path:'list', component:ImageListComponent } //gallery/list
+      { path: '', redirectTo: 'gallery/list', pathMatch: 'full' },
+      { path:'list', component:ImageListComponent },
+      { path:'upload', component: ImageComponent }
     ]
   },
   { path: '**', component: PageNotFoundComponent }
