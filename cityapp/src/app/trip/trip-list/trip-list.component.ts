@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TripService } from '../trip.service';
-import { Trip } from '../trip.model';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
@@ -28,10 +27,6 @@ export class TripListComponent implements OnInit {
 
   ngOnInit() {
     this.service.refreshList();
-  }
-
-  onUpdate(trip: Trip) {
-    this.service.formData = Object.assign({}, trip);
   }
 
   onDelete(TripId) {

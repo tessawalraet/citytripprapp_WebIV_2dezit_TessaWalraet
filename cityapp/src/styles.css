@@ -97,6 +97,14 @@ div.form-group.required>label:first-child:after{
     padding-bottom: 10%;
   }
 
+  input.ng-touched.ng-invalid{
+    border-color: #dc3545;
+}
+
+  .red-icon{
+    color: #dc3545;
+  }
+
   /* Tabs */
 .tab-header{
     text-align: center;

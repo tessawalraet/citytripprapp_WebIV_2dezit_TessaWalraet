@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripService } from '../trip.service';
-import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -20,8 +20,8 @@ export class DetailsComponent implements OnInit {
 
   resetForm(form?: NgForm) {
     if(form != null)
-      form.resetForm();
-    this.service.formData= {
+      form.reset();
+    this.service.formData = {
       TripId: 0,
       Destination: '',
       Description: '',
@@ -30,15 +30,13 @@ export class DetailsComponent implements OnInit {
       Related: '',
       Food: null,
       Weather: null,
-      Experience: 10
+      Experience: null
     }
   }
 
   onSubmit(form: NgForm) {
     if(this.service.formData.TripId == 0)
       this.insertRecord(form);
-    else
-      this.updateRecord(form);
   }
 
   insertRecord(form: NgForm) {
@@ -46,19 +44,6 @@ export class DetailsComponent implements OnInit {
       res => {
         this.resetForm(form);
         this.toastr.success('Succesvol toegevoegd!', 'Mijn CityTripps');
-        this.service.refreshList();
-      },
-      err => {
-        console.log(err);
-      }
-    )
-  }
-
-  updateRecord(form: NgForm) {
-    this.service.putTrip().subscribe(
-      res => {
-        this.resetForm(form);
-        this.toastr.info('Succesvol aangepast!', 'Mijn CityTripps');
         this.service.refreshList();
       },
       err => {

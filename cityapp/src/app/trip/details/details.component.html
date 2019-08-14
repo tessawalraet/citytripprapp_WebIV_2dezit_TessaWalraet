@@ -4,10 +4,10 @@
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text bg-white">
-                    <i class="fas fa-globe-americas"></i>
+                    <i class="fas fa-globe-americas" [class.red-icon]="Destination.invalid && Destination.touched"></i>
                 </div>
             </div>
-            <input name="Destination" #Destination="ngModel" [(ngModel)]="service.Destination" class="form-control" placeholder="Bestemming">
+            <input name="Destination" #Destination="ngModel" [(ngModel)]="service.Destination" class="form-control" placeholder="Bestemming *" required>
         </div>
     </div>
     <!--Beschrijving-->
@@ -39,10 +39,10 @@
                 <div class="input-group" style="margin-left: 43px; margin-top: 35px">
                     <div class="input-group-prepend">
                         <div class="input-group-text bg-white">
-                            <i class="far fa-calendar-alt"></i>
+                            <i class="far fa-calendar-alt" [class.red-icon]="Days.invalid && Days.touched"></i>
                         </div>
                     </div>
-                    <input name="Days" #Days="ngModel" [(ngModel)]="service.Days" class="form-control" placeholder="Aantal dagen" min="1">
+                    <input type="number" min="1" name="Days" #Days="ngModel" [(ngModel)]="service.Days" class="form-control" placeholder="Aantal dagen" required>
                 </div>
             </div>
         </div>
@@ -55,11 +55,10 @@
                     <i class="fas fa-suitcase"></i>
                 </div>
             </div>
-            <mat-radio-group name="related" #Related="ngModel" [(ngModel)]="service.Related" class="form-control">
+            <mat-radio-group name="Related" #Related="ngModel" [(ngModel)]="service.Related" class="form-control">
                 <mat-radio-button value="Privé">Privé</mat-radio-button>
                 <mat-radio-button class="col-md-6" value="Werk">Werk</mat-radio-button><br>
             </mat-radio-group>
-            
         </div>
     </div>
     <!--Eten-->
@@ -68,11 +67,10 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text bg-white">
-                        <i class="fas fa-utensils"></i>
+                        <i class="fas fa-utensils" [class.red-icon]="Food.invalid && Food.touched"></i>
                     </div>
                 </div>
-                <mat-select id="border" name="Food" #Food="ngModel" [(ngModel)]="service.formData.Food" class="form-control" placeholder="Eten">
-                    <mat-option>-Eten-</mat-option>
+                <mat-select id="border" name="Food" #Food="ngModel" [(ngModel)]="service.Food" class="form-control" placeholder="-Eten *-" required>
                     <mat-option *ngFor="let food of numberList" [value]="food">{{ food }}</mat-option>
                 </mat-select>
             </div>
@@ -82,11 +80,10 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text bg-white">
-                        <i class="fas fa-umbrella-beach"></i>
+                        <i class="fas fa-umbrella-beach" [class.red-icon]="Weather.invalid && Weather.touched"></i>
                     </div>
                 </div>
-                <mat-select id="border" name="Weather" #Weather="ngModel" [(ngModel)]="service.Weather" class="form-control" placeholder="Weer">
-                    <mat-option>-Weer-</mat-option> 
+                <mat-select id="border" name="Weather" #Weather="ngModel" [(ngModel)]="service.Weather" class="form-control" placeholder="-Weer *-" required>
                     <mat-option *ngFor="let weather of numberList" [value]="weather">{{ weather }}</mat-option>
                 </mat-select>
             </div>
@@ -96,10 +93,10 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text bg-white">
-                        <i class="fas fa-user-check"></i>
+                        <i class="fas fa-user-check" [class.red-icon]="Experience.invalid && Experience.touched"></i>
                     </div>
                 </div>
-                <mat-select required id="border" name="Experience" #Experience="ngModel" [(ngModel)]="service.Experience" class="form-control" [class.is-invalid]="!isValid && service.Food==0" placeholder="Ervaring *">
+                <mat-select id="border" name="Experience" #Experience="ngModel" [(ngModel)]="service.Experience" class="form-control" placeholder="-Ervaring *-" required>
                     <mat-option *ngFor="let experience of numberList" [value]="experience">{{ experience }}</mat-option>
                 </mat-select>
             </div>

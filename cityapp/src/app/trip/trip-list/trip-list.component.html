@@ -13,7 +13,7 @@
     </mat-card>
 </div>
 <hr>
-<table class="table table-hover">
+<table class="table table-hover" style="margin-bottom: 80px">
     <tr>
         <th>Bestemming</th>
         <th>Beschrijving</th>
@@ -23,7 +23,6 @@
         <th>Eten</th>
         <th>Weer</th>
         <th>Ervaring</th>
-        <th></th>
         <th></th>
     </tr>
     <tr *ngFor="let trip of (service.list | tripFilter: filterTripDest)">
@@ -35,9 +34,6 @@
         <td style="text-align:center">{{ trip.Food }}</td>
         <td style="text-align:center">{{ trip.Weather }}</td>
         <td style="text-align:center">{{ trip.Experience }}</td>
-        <td>
-            <i class="far fa-edit" id="pointer" (click)="onUpdate(trip)"></i>
-        </td>
         <td>
             <i class="far fa-trash-alt fa-lg text-danger" id="pointer" (click)="onDelete(trip.TripId)" data-cy=delete-city-button></i>
         </td>
