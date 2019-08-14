@@ -29,6 +29,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     TripFilterPipe,
     GalleryComponent,
     ImageComponent,
-    ImageListComponent
+    ImageListComponent,
+    PageNotFoundComponent,
+    ScrollTopComponent
   ],
   imports: [
     BrowserModule,

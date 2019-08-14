@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ImageComponent } from './gallery/image/image.component';
 import { ImageListComponent } from './gallery/image-list/image-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'/user/login', pathMatch:'full' },
@@ -27,7 +28,8 @@ const routes: Routes = [
       { path:'upload', component: ImageComponent }, //gallery/upload
       { path:'list', component:ImageListComponent } //gallery/list
     ]
-  }
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
