@@ -5,7 +5,6 @@ import { GalleryComponent } from './gallery.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { ImageListComponent } from './image-list/image-list.component';
 import { ImageComponent } from './image/image.component';
-import { ScrollTopComponent } from '../scroll-top/scroll-top.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
