@@ -12,24 +12,23 @@ import { ImageListComponent } from './gallery/image-list/image-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path:'', redirectTo:'/user/login', pathMatch:'full' },
-  {
-    path: 'user', component: UserComponent,
-    children: [
-      { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent}
-    ]
+  
+  //,
+  { 
+    path:'', 
+    loadChildren:  () => import('./user/user.module').then(mod => mod.UserModule)
   },
-  { path:'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path:'UserProfile', component: ProfileComponent, canActivate: [AuthGuard] },
-  {
-    path:'gallery', component: GalleryComponent, canActivate: [AuthGuard],
-    children: [
-      { path: '', redirectTo: 'gallery/list', pathMatch: 'full' },
-      { path:'list', component:ImageListComponent },
-      { path:'upload', component: ImageComponent }
-    ]
+  { 
+    path:'', 
+    canActivate: [AuthGuard],
+    loadChildren:  () => import('./trip/trip.module').then(mod => mod.TripModule)
   },
+  {
+    path:'',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./gallery/gallery.module').then(mod => mod.GalleryModule)
+  },
+  { path: 'UserProfile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];
 
