@@ -41,6 +41,11 @@ div.form-group.required>label:first-child:after{
     opacity:1;
 }
 
+#title{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
 .wrapper {
     display: flex;
     align-items: center;

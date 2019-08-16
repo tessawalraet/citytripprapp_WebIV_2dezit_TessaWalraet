@@ -1,4 +1,4 @@
-<div class="card" style="width: 25rem">
+<div class="card" style="width: 500px">
     <div class="card-body">
         <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
             <div class="text-center">
@@ -6,7 +6,7 @@
             </div>
             <div class="form-group">
                 <label>Selecteer bestand</label>
-                <input type="file" accept="image/*" class="form-control" #uploadFile formControlName="imageUrl" (change)="showPreview($event)">
+                <input type="file" accept="image/*" class="form-control" #uploadFile formControlName="imageUrl" (change)="showPreview($event)" style="height: 45px">
                 <div class="text-danger" *ngIf="isSubmitted && formControls.imageUrl.errors?.required">Dit veld is verplicht!</div>
             </div>
             <div class="form-group">
